@@ -16,13 +16,7 @@ body {
   padding: 10px;
 }
 
-.card {
-  width: 90%;
-  max-width: 350px;
-  aspect-ratio: 16 / 10; /* keeps proportion */
-  perspective: 1000px;
-  cursor: pointer;
-}
+
 
 .card-inner {
   width: 100%;
@@ -115,3 +109,30 @@ canvas#confetti {
   left: 0;
   pointer-events: none;
 }
+/* ...existing code... */
+@media (max-width: 600px) {
+  .card {
+    max-width: 95vw;
+    height: 70vw;
+    max-height: 350px;
+  }
+  .card-front h1, .card-back h2 {
+    font-size: 1.3rem;
+  }
+  .card-front p, .card-back p, .signature {
+    font-size: 0.95rem;
+  }
+  .card-inner {
+    min-height: 250px;
+  }
+}
+
+canvas#confetti {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+}
+/* ...existing code... */
