@@ -1,0 +1,117 @@
+:root {
+  --pink: #ff80ab;
+  --bg1: #ffe0f7;
+  --bg2: #fff0f5;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.card {
+  width: 90%;
+  max-width: 350px;
+  aspect-ratio: 16 / 10; /* keeps proportion */
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.card {
+  width: 95%;                 /* take more screen width */
+  max-width: 400px;           /* bigger than before */
+  aspect-ratio: 16 / 10;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+/* Front cover bigger effect */
+.card-front {
+  background: var(--pink);
+  color: white;
+  transform: scale(1.05);     /* make front slightly larger */
+  animation: pulse 2s infinite ease-in-out; /* pulsing animation */
+}
+
+/* Back stays normal */
+.card-back {
+  background: white;
+  transform: rotateY(180deg) scale(1);
+  color: #444;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.card.open .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.card-front {
+  background: var(--pink);
+  color: white;
+}
+
+.card-back {
+  background: white;
+  transform: rotateY(180deg);
+  color: #444;
+}
+
+.card-front h1, .card-back h2 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+}
+
+.card-front p, .card-back p {
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+}
+
+.signature {
+  margin-top: 15px;
+  font-style: italic;
+  font-weight: bold;
+  color: var(--pink);
+}
+
+canvas#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
